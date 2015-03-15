@@ -31,11 +31,18 @@ $(document).on('click', '#contact-list a', function() {
 $(document).on('pagebeforeshow', '#details-page', function() {
 	var contact = _contacts[_contactID]
 	var details = $('#details-page')
-	$('contact-details').text(contact.name + 'details')
-	$('contact-details').text(contact.title + 'details')
-	$('contact-details').append(contact.name)
-	details.append('<li>Text</li>')
-	$('h2').append(contact.name)
+	
+	$('#first_name').text(contact.name)
+	$('#title').text(contact.title)
+	$('#phone').text(contact.phone)
+	$('#email').text(contact.email)
+	$('#twitterId').text(contact.twitterId)
+	
+	//$('contact-details').text(contact.name + 'details')
+	//$('contact-details').text(contact.title + 'details')
+	//$('contact-details').append(contact.name)
+	//details.append('<li>Text</li>')
+	//$('h2').append(contact.name)
 	//$('first_name').append(contact.name);
 
 });
