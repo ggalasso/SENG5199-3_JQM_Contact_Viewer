@@ -3,3 +3,24 @@
 	background-position: center;
 	background-size: 30px 30px;
 }
+
+
+@media all and (max-width: 15em) {
+.ui-grid-a .ui-block-a { width: 15%; 
+float: none;},
+.ui-grid-a .ui-block-b { width: 85%; 
+float: none;}
+}
+
+#first_name{
+text-align = left;
+}
+#title{
+text-align = left;
+font-style: italic;
+}
+.ui-grid-solo .ui-block-a {
+float: none;
+background-color: #C0C0C0;
+font-weight: bolder;
+}
