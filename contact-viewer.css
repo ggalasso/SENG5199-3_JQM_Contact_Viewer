@@ -1,1 +1,5 @@
-
+.ui-icon-discard {
+	background-image: url("ic_action_discard.png");
+	background-position: center;
+	background-size: 30px 30px;
+}
