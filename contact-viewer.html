@@ -15,10 +15,13 @@
 	</head>
 
 	<body>
+	
+	<!-- Home Page -->
+	
 		<div data-role="page" id="home-page">
 			<div data-role="header">
 				<h1>Contacts</h1>
-				<a href="#add-page">Add</a>
+				<a class ="ui-btn-right" href="#add-page" data-icon="plus">Add</a>
 			</div>
 			<div data-role="content">
 				<ul data-role="listview" id="contact-list">
@@ -33,29 +36,69 @@
 		</div>
 
 
-		<div data-role"page" id="details-page">
+	<!-- Details Page -->
+	
+		<div data-role="page" id="details-page">
+		
 			<div data-role="header">
-				<a data-role="button" data-rel="back">Back</a>
-				<a class="ui-nodisc-icon" data-role="button" data-icon="discard" data-iconpos="notext">Delete</a>
-				<h1>Contact Details</h1>
-			</div>
-			<div data-role="content">
-				<p class="contact-details">
-					Testtttttting
-				</p>
-				<h2 class="first_name">
-					First:
-				</h2>
-				<h2 class="last_name">
-					Last:
-				</h2>
-				<textarea>Title: </textarea>
-				<div data-role="listview">
+				
+				<a class="ui-btn-left" data-role="button" data-icon="carat-l" data-rel="back">All Contacts </a>
+				<div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
+					<a class="ui-alt-icon ui-nodisc-icon" data-role="button" data-icon="edit" data-iconpos="notext""> Edit </a>
+					<a class="ui-nodisc-icon" data-role="button" data-icon="discard" data-iconpos="notext"> Delete </a>
 				</div>
+			</div>	
+			
+			<br>
+			<br>
+			<br>
+			
+			<div data-role="content">
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+					<img width = "90" height= "90" src="ic_action_person.png" alt="image" > </img>
+					</div>
+						
+					<div class="ui-block-b">
+					<h2 id="first_name"></h2>
+					<h3 id="title"> </h3>
+					</div>
+				</div>
+				<br>
+				<div class="ui-grid-solo">
+					<div class="ui-block-a"> <div>Phone</div> </div>
+				</div>
+				<br>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"> Mob: </div>
+					<div class="ui-block-b" id="phone">  </div>
+				</div>
+				<br>
+				<div class="ui-grid-solo">
+					<div class="ui-block-a"> Email </div>
+				</div>
+				<br>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"> Work: </div>
+					<div class="ui-block-b" id="email">  </div>
+				</div>
+				<br>
+				<div class="ui-grid-solo">
+					<div class="ui-block-a"> Social </div>
+				</div>
+				<br>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"> TwitterId: </div>
+					<div class="ui-block-b" id="twitterId">  </div>
+				</div>
+				
+				
 			</div>
 		</div>
 
-		<!-- Page to add new contact -->
+
+	<!-- Page to add new contact -->
+		
 		<div data-role="page" id="add-page">
 			<form id="add-contact-form" action="#home-page" method="post">
 				<div data-role="header">
