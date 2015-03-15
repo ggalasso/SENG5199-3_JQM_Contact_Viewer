@@ -18,49 +18,35 @@
 		<div data-role="page" id="home-page">
 			<div data-role="header">
 				<h1>Contacts</h1>
-
+				<a href="#add-page">Add</a>
 			</div>
 			<div data-role="content">
 				<ul data-role="listview" id="contact-list">
 					<li>
-						<a>
-							<h3>Item 1</h3>
-							<p>
-								Details
-							</p>
-						</a>
+						<a><h3>Item 1</h3><p>Details</p></a>
 					</li>
-
 					<li>
-						<a>
-							<h3>Item 2</h3>
-							<p>
-								Details
-							</p>
-						</a>
+						<a><h3>Item 2</h3><p>Details</p></a>
 					</li>
-				</ul>	
+				</ul>
 			</div>
 		</div>
 
 
 		<div data-role"page" id="details-page">
 			<div data-role="header">
-			<a data-role="button" data-rel="back">
-				Back
-			</a>
-			<h1>Contact Details</h1>
-
+				<a data-role="button" data-rel="back">Back</a>
+				<h1>Contact Details</h1>
 			</div>
 			<div data-role="content">
 				<p class="contact-details">
 					Testtttttting
 				</p>
 				<h2 class="first_name">
-					First: 
+					First:
 				</h2>
 				<h2 class="last_name">
-					Last: 
+					Last:
 				</h2>
 				<textarea>Title: </textarea>
 				<div data-role="listview">
@@ -68,7 +54,32 @@
 			</div>
 		</div>
 
-		<div data-role"page" id="edit-page">
+		<!-- Page to add new contact -->
+		<div data-role="page" id="add-page">
+			<form id="add-contact-form" action="#home-page" method="post">
+				<div data-role="header">
+					<a href="#home-page" data-role="button" data-icon="delete" data-theme="b">Cancel</a>
+					<h1>Add Contact</h1>
+					<!--<a href="#home-page" data-role="button" data-icon="check" data-theme="b" type="submit">Save</a>-->
+					<button type="submit" data-icon="check" data-theme="b">Save</a>
+				</div>
+				<div data-role="fieldcontain">
+	    		<label for="name">Name:</label>
+	    		<input type="text" name="name" id="name" value="" placeholder="Name..." />
+					<label for="title">Title:</label>
+	    		<input type="text" name="title" id="title" value="" placeholder="Title..." />
+					<label for="email">Email:</label>
+	    		<input type="email" name="email" id="email" value="" placeholder="Email..."  />
+					<label for="phone">Phone:</label>
+	    		<input type="tel" name="phone" id="phone" value="" placeholder="Phone..." />
+					<label for="twitter">Twitter:</label>
+	    		<input type="text" name="twitter" id="twitter" value="" placeholder="Twitter ID..." />
+				</div>
+				<input type="submit" value="Submit Button" />
+			</form>
+		</div>
+
+		<div data-role="page" id="edit-page">
 			<div data-role="header">
 			<a data-role="button" data-rel="back">
 				Back
@@ -80,10 +91,10 @@
 				<p class="contact-details">
 				</p>
 				<h2 class="first_name">
-					First: 
+					First:
 				</h2>
 				<h2 class="last_name">
-					Last: 
+					Last:
 				</h2>
 				<textarea>Title: </textarea>
 				<div data-role="listview">
