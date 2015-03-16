@@ -28,23 +28,49 @@ $(document).on('click', '#contact-list a', function() {
 	return true
 })
 
+
 $(document).on('pagebeforeshow', '#details-page', function() {
 	var contact = _contacts[_contactID]
-	var details = $('#details-page')
 	
 	$('#first_name').text(contact.name)
-	$('#title').text(contact.title)
-	$('#phone').text(contact.phone)
-	$('#email').text(contact.email)
-	$('#twitterId').text(contact.twitterId)
-	
-	//$('contact-details').text(contact.name + 'details')
-	//$('contact-details').text(contact.title + 'details')
-	//$('contact-details').append(contact.name)
-	//details.append('<li>Text</li>')
-	//$('h2').append(contact.name)
-	//$('first_name').append(contact.name);
+	$('#d-title').text(contact.title)
+	$('#d-phone').text(contact.phone)
+	$('#d-email').text(contact.email)
+	$('#d-twitterId').text(contact.twitterId)
 
+});
+
+$(document).on('pageshow', '#home-page', function(){
+	console.log("Its home page")
+	_contactID = null
+	return true
+});
+
+$(document).on('click', '#delete-me', function(){
+	console.log("Delete clicked")
+	
+	$.ajax({
+				url: 'http://contacts.tinyapollo.com/contacts/' + _contactID.trim() + '?key=' + apiKey,
+				method: 'DELETE',
+
+			complete: function() {
+			},
+			success: function (result) {
+			  if(result.status) {
+							console.log('Contact Deleted' + _contactID)
+							$.mobile.changePage("#home-page");
+			  } else {
+							console.log('Delete Contact Failed!' + result);
+							$.mobile.changePage("#home-page");
+							
+			  }
+			},
+			error: function (request,error) {
+			  // This callback function will trigger on unsuccessful action
+					console.log('Inside Error Function!' + error + request)
+				}
+			});
+	return true
 });
 
 $(document).on('pagebeforeshow', '#add-page', function() {
