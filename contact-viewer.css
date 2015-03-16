@@ -4,7 +4,6 @@
 	background-size: 30px 30px;
 }
 
-
 @media all and (max-width: 15em) {
 .ui-grid-a .ui-block-a { width: 15%; 
 float: none;},
@@ -13,13 +12,15 @@ float: none;}
 }
 
 #first_name{
-text-align = left;
+text-align: left;
+font-weight: bold;
 }
-#title{
-text-align = left;
+#d-title{
+text-align: left;
 font-style: italic;
 }
 .ui-grid-solo .ui-block-a {
+width: 100%;
 float: none;
 background-color: #C0C0C0;
 font-weight: bolder;
