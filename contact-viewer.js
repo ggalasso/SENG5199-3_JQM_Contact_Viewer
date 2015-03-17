@@ -23,10 +23,6 @@ $(document).on("pagebeforeshow", "#home-page", function() {
 	})
 })
 
-$(document).on('pageonload', "#home-page", function() {
-
-});
-
 $(document).on('click', '#contact-list a', function() {
 	var link = $(this)
 	_contactID = link.data('contact-id')
