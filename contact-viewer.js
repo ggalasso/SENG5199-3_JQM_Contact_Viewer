@@ -173,7 +173,7 @@ $(document).on('submit', '#add-page', function(){
 							console.log('Edit Contact Failed!' + result + ' ' + result.message);
 			  }
 			  $.mobile.changePage("#details-page");
-				contact
+				
 			},
 			error: function (request,error) {
 			  // This callback function will trigger on unsuccessful action
