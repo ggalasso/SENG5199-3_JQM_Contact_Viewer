@@ -51,7 +51,7 @@
 						</div>
 
 						<div class="ui-block-b">
-							<p class="contact-details" id="first_name"></p>
+							<p class="contact-details" id="d-name"></p>
 							<p class="contact-details" id="d-title" ></p>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 		<div data-role="page" id="add-page">
 			<form id="add-contact-form" action="#home-page" method="post" enctype="multipart/form-data">
 				<div data-role="header">
-					<a href="#home-page" data-role="button" data-icon="delete" data-theme="b">Cancel</a>
+					<a id="cancel-btn" data-role="button" data-icon="delete" data-theme="b">Cancel</a>
 					<h1>Add Contact</h1>
 					<!--<a href="#home-page" data-role="button" data-icon="check" data-theme="b" type="submit">Save</a>-->
 					<button type="submit" data-icon="check" data-theme="b">Save</a>
@@ -106,7 +106,7 @@
 					<label for="phone">Phone:</label>
 	    		<input type="tel" name="phone" id="phone" value="" placeholder="Phone..." />
 					<label for="twitter">Twitter:</label>
-	    		<input type="text" name="twitter" id="twitter" value="" placeholder="Twitter ID..." />
+	    		<input type="text" name="twitterId" id="twitterId" value="" placeholder="Twitter ID..." />
 				</div>
 				<input type="submit" value="Submit Button" />
 			</form>
