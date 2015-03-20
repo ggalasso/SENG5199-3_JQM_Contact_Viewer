@@ -1,7 +1,7 @@
 var apiKey = 'bricked'
 var _contacts = {};
 var _contactID = null;
-
+var _editContactId = null;
 
 $(document).on("pagebeforeshow", "#home-page", function() {
 	var contactList = $('#contact-list')
@@ -21,29 +21,36 @@ $(document).on("pagebeforeshow", "#home-page", function() {
 		};
 		contactList.listview('refresh')
 	})
+	_contactID = null
 })
 
 $(document).on('click', '#contact-list a', function() {
 	var link = $(this)
 	_contactID = link.data('contact-id')
+	_editContactId = null
 	console.log("contact id is: " +  _contactID)
 	return true
 })
 
 $(document).on('pagebeforeshow', '#details-page', function() {
-	var contact = _contacts[_contactID]
+	if(_editContactId==null){
 
-	$('#first_name').text(contact.name)
-	$('#d-title').text(contact.title)
-	$('#d-phone').text(contact.phone)
-	$('#d-email').text(contact.email)
-	$('#d-twitterId').text(contact.twitterId)
-});
-
-$(document).on('pageshow', '#home-page', function(){
-	console.log("Its home page")
-	_contactID = null
-	return true
+	 var contactD = _contacts[_contactID]	
+		$('#d-name').text(contactD.name)
+		$('#d-title').text(contactD.title)
+		$('#d-phone').text(contactD.phone)
+		$('#d-email').text(contactD.email)
+		$('#d-twitterId').html(contactD.twitterId)
+	}
+	else{
+		
+		$.get( 'http://contacts.tinyapollo.com/contacts/' + _editContactId.trim() + '?key=' + apiKey, function (result) {
+			for (i in result.contact) {	
+				$('#d-' + i).text(result.contact[i])
+			};
+		})
+		_contactID = _editContactId	
+	}
 });
 
 $(document).on('click', '#delete-me', function(){
@@ -73,29 +80,34 @@ $(document).on('click', '#delete-me', function(){
 	return true
 });
 
-
+$(document).on('click', '#cancel-btn', function(){
+	history.back();
+return true
+});
+	
 $(document).on('pagebeforeshow', '#add-page', function() {
 	//Clear out all of the fields each time the page is loaded
 	if (_contactID == null)
 		{
+			_editContactId = null
 			$('#add-contact-form h1').text('Add Contact')
 			$('#name').val("");
 			$('#title').val("");
 			$('#email').val("");
 			$('#phone').val("");
-			$('#twitter').val("");
+			$('#twitterId').val("");
 
 			console.log("add clicked ")
 		}
 	else
 		{
+			_editContactId = _contactID
 			$('#add-contact-form h1').text('Edit Contact');
-			var contact = _contacts[_contactID];
-			$('#name').val(contact.name);
-			$('#title').val(contact.title);
-			$('#email').val(contact.email);
-			$('#phone').val(contact.phone);
-			$('#twitter').val(contact.twitterId);
+			$.get( 'http://contacts.tinyapollo.com/contacts/' + _editContactId.trim() + '?key=' + apiKey, function (result) {
+			for (i in result.contact) {	
+				$('#' + i).val(result.contact[i])
+			};
+		})
 
 			console.log("edit clicked " +  _contactID)
 		}
@@ -106,12 +118,12 @@ $(document).on('submit', '#add-page', function(){
 	var myTitle = $('#title').val().trim();
 	var myEmail = $('#email').val().trim();
 	var myPhone = $('#phone').val().trim();
-	var myTwitter = $('#twitter').val().trim();
+	var myTwitter = $('#twitterId').val().trim();
 	console.log('Contact Info:' + myName + ' ' + myTitle + myPhone)
 	//http://api.jquery.com/jQuery.ajax/
 
 
-	if(_contactID==null){
+	if(_editContactId==null){
 
 		$.ajax({
 			url: 'http://contacts.tinyapollo.com/contacts/?key=' + apiKey,
@@ -160,7 +172,7 @@ $(document).on('submit', '#add-page', function(){
 			  } else {
 							console.log('Edit Contact Failed!' + result + ' ' + result.message);
 			  }
-			  $.mobile.changePage("#home-page");
+			  $.mobile.changePage("#details-page");
 				contact
 			},
 			error: function (request,error) {
